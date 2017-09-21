@@ -5,12 +5,14 @@ import { CommonModule } from '@angular/common';
 import { PersonsService } from '../../services/persons.service';
 import { DetailsComponent } from './details.component';
 import { LoginModule } from './login/login.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         SharedModule,
         CommonModule,
-        LoginModule
+        LoginModule,
+        ReactiveFormsModule
     ],
     declarations: [BrigadeTableComponent, DetailsComponent],
     exports: [BrigadeTableComponent],

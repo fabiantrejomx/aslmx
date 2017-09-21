@@ -42,4 +42,8 @@ export class PersonComponent implements OnInit{
         }
         ,error => console.log(error))
     }
+
+    goToBack(){
+        this.router.navigate(['app/dashboard']);
+    }
 }

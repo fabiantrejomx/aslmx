@@ -29,4 +29,11 @@ export class PersonsService {
         return this.http.post(this.url + '/info', body);
     }
 
+    searchPeople(name: string){
+        let params = new HttpParams();
+        params = params.append('name', name);
+
+        return this.http.get(this.url + '/families/familiar/found', { params })
+    }
+
 }

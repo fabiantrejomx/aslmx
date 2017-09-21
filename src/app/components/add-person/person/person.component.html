@@ -1,5 +1,5 @@
 <div class="card" style="width: 40rem;">
-    <img class="card-img-top" src="{{person?.image}}" alt="Card image cap">
+    <img class="card-img-top" src="{{person?.image}}" alt="Card image cap" height="40%" width="40%">
     <div class="card-block">
       <h1 class="h1">{{person?.fullname}}</h1>
       <br/>
@@ -10,10 +10,13 @@
             <label for="description">Escribe la ubicación</label>
             <textarea class="form-control" id="description" rows="3" formControlName="body"></textarea>
           </div>
-          <button class="btn btn-success mt-2" [disabled]="form.invalid" (click)="sendAlert()">
-            <span *ngIf="!isSaving">Mandar alerta!!</span>
-            <span *ngIf="isSaving">Mandando alerta!!</span>
-          </button>
+          <div class="d-flex justify-content-end">
+              <button class="btn btn-success mt-2" [disabled]="form.invalid" (click)="sendAlert()">
+                <span *ngIf="!isSaving">Mandar alerta!!</span>
+                <span *ngIf="isSaving">Mandando alerta!!</span>
+              </button>
+              <button class="btn btn-info mt-2 ml-3" (click)="goToBack()">Regresar</button>
+          </div>
         </form>
     </div>
   </div>

@@ -1,4 +1,19 @@
-<table class="table" *ngIf="isSuccess">
+<div class="row mb-5" *ngIf="isSuccess">
+    <div class="col-5">
+        <form [formGroup]="form">
+            <div class="input-group">
+                <input formControlName="name" type="text" class="form-control" placeholder="Buscar">
+                <span class="input-group-btn">
+                <button (click)="search()" class="btn btn-inverse" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table" *ngIf="isSuccess && persons.length">
     <tbody>
         <tr>
           <th>Nombre</th>
@@ -8,5 +23,7 @@
         <tr details [person]="person" *ngFor="let person of persons"></tr>
     </tbody>
 </table>
+
+<div class="alert alert-info" *ngIf="!persons.length">No se encontrarón resultados</div>
 
 <login (success)="isSuccess = true;" (error)="isSuccess = false;" *ngIf="!isSuccess"></login>
