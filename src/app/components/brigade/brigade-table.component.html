@@ -1,0 +1,12 @@
+<table class="table" *ngIf="isSuccess">
+    <tbody>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th></th>
+        </tr>
+        <tr details [person]="person" *ngFor="let person of persons"></tr>
+    </tbody>
+</table>
+
+<login (success)="isSuccess = true;" (error)="isSuccess = false;" *ngIf="!isSuccess"></login>

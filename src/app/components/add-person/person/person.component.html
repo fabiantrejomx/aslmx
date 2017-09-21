@@ -1,0 +1,19 @@
+<div class="card" style="width: 40rem;">
+    <img class="card-img-top" src="{{person?.image}}" alt="Card image cap">
+    <div class="card-block">
+      <h1 class="h1">{{person?.fullname}}</h1>
+      <br/>
+      <p class="card-text">Correo: {{person?.email}}</p>
+      <p class="card-text">Telefono de contacto: {{person?.contacto}}</p>
+      <form [formGroup]="form">
+          <div class="form-group">
+            <label for="description">Escribe la ubicación</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="body"></textarea>
+          </div>
+          <button class="btn btn-success mt-2" [disabled]="form.invalid" (click)="sendAlert()">
+            <span *ngIf="!isSaving">Mandar alerta!!</span>
+            <span *ngIf="isSaving">Mandando alerta!!</span>
+          </button>
+        </form>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+<form [formGroup]="form">
+    <div class="form-group">
+        <p for="image">Imagen de persona a buscar</p>
+        <input #fileInput (change)="imageFileSelected($event)" class="upload" type="file" accept=".jpg, .jpeg, .png, .bmp">
+    </div>
+    <div class="form-group">
+        <label for="email">Ingresa tu email</label>
+        <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label for="phone">Ingresa tu teléfono</label>
+        <input type="number" class="form-control" id="phone" placeholder="Teléfono" formControlName="contacto">
+    </div>
+    <div class="form-group">
+        <label for="fullname">Ingresa nombre</label>
+        <input type="text" class="form-control" id="fullname" placeholder="Ingresa nombre" formControlName="fullname">
+    </div>
+    <div class="form-group">
+        <label for="age">Ingresa la edad</label>
+        <input type="number" class="form-control" id="age" placeholder="Edad" formControlName="age">
+    </div>
+    <button class="btn btn-success" (click)="save()" [disabled]="form.invalid || isSaving">
+        <span *ngIf="!isSaving">Enviar información</span>
+        <span *ngIf="isSaving">Enviando información...</span>
+    </button>
+</form>
