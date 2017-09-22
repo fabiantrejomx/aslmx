@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "install": "napa",
-    "start": "export NODE_ENV=integration|| set NODE_ENV=integration&& webpack-dev-server --inline --progress --port 8080",
+    "start": "export NODE_ENV=integration|| set NODE_ENV=integration&& webpack-dev-server --inline --progress --port 8081",
     "postinstall": "typings install",
-    "build:prod": "rimraf dist && rimraf aslmx.war&& export NODE_ENV=production|| set NODE_ENV=production && webpack --progress" 
+    "build:prod": "rimraf dist && rimraf aslmx.war&& export NODE_ENV=production|| set NODE_ENV=production && webpack --progress"
   },
   "keywords": [],
   "author": "",
@@ -48,7 +48,7 @@
     "ng2-translate": "^5.0.0",
     "pace": "git://github.com/HubSpot/pace.git#v0.7.7",
     "rxjs": "^5.1.1",
-    "sweetalert2": "^6.6.2",
+    "sweetalert2": "^6.9.1",
     "webpack-deploy2war": "^0.1.1",
     "webpack-raphael": "^2.1.4",
     "zone.js": "^0.8.11"

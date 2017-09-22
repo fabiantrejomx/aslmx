@@ -17,7 +17,15 @@
     </div>
     <div class="form-group">
         <label for="age">Ingresa la edad</label>
-        <input type="number" class="form-control" id="age" placeholder="Edad" formControlName="age">
+        <div class="input-group">
+            <input formControlName="age" type="number" class="form-control" placeholder="Edad">
+            <span class="input-group-btn">
+                <button [disabled]="true" class="btn btn-inverse" type="button">
+                    años
+                </button>
+            </span>
+        </div>
+        <div *ngIf="form.controls.age.errors?.invalidNumber && form.controls.age.touched" class="form-control-feedback text-danger">Ingresar una edad valida</div>
     </div>
     <button class="btn btn-success" (click)="save()" [disabled]="form.invalid || isSaving">
         <span *ngIf="!isSaving">Enviar información</span>

@@ -1,17 +1,13 @@
-<div class="js-sidebar-content">
-  <header class="logo hidden-sm-down">
-  </header>
-  <ul class="sidebar-nav">
-    <li>
-      <a [routerLink]=" ['dashboard'] ">
+<div class="container-fluid no-gutters">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <a [routerLink]="['dashboard']">
           <span class="icon">
             <i class="fa fa-desktop"></i>
           </span>
           Personal Administrativo
       </a>
-    </li>
-    <li>
-      <a [routerLink]=" ['person'] ">
+      <a [routerLink]="['person']" class="ml-3">
           <span class="icon">
             <i class="fa fa-check-square-o"></i>
           </span>
@@ -19,5 +15,4 @@
       </a>
     </li>
   </ul>
-  <h5 class="sidebar-nav-title"></h5>
 </div>
