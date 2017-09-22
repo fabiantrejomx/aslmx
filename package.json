@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "install": "napa",
-    "start": "webpack-dev-server --inline --progress --port 8081",
+    "start": "export NODE_ENV=integration|| set NODE_ENV=integration&& webpack-dev-server --inline --progress --port 8080",
     "postinstall": "typings install",
-    "build:prod": "rimraf dist && rimraf aslmx.war&& export NODE_ENV=production|| set NODE_ENV=production && webpack --progress"
+    "build:prod": "rimraf dist && rimraf aslmx.war&& export NODE_ENV=production|| set NODE_ENV=production && webpack --progress" 
   },
   "keywords": [],
   "author": "",
@@ -53,9 +53,7 @@
     "webpack-raphael": "^2.1.4",
     "zone.js": "^0.8.11"
   },
-  "napa": { 
-
-  },
+  "napa": {},
   "devDependencies": {
     "@types/bootstrap": "^3.3.33",
     "@types/hammerjs": "2.0.33",
@@ -83,6 +81,7 @@
     "typescript": "^2.1.6",
     "typings": "^2.1.0",
     "webpack": "^2.2.1",
+    "webpack-deploy2war": "^0.1.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-merge": "^3.0.0"
   }

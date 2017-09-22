@@ -5,15 +5,13 @@ var commonConfig = require('./webpack.common.js');
 var DeployToWar = require('webpack-deploy2war');
 var CompressionPlugin = require('compression-webpack-plugin');
 
-const path = require('path');
-const rootDir = path.resolve(__dirname, '..');
-const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
+const ENV = process.env.ENV = process.env.NODE_ENV;
 const metadata = webpackMerge(commonConfig.metadata, {
-  host: 'localhost',
-  port: 8080,
   ENV: ENV
 });
 
+const path = require('path');
+const rootDir = path.resolve(__dirname, '..');
 var plugins = [
 		new ExtractTextPlugin('style-[contenthash:10].css'),
         new webpack.optimize.CommonsChunkPlugin('common.js'),
@@ -28,8 +26,8 @@ var plugins = [
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(metadata.ENV),
-                'NODE_ENV': JSON.stringify(metadata.ENV),
+                'ENV': JSON.stringify(metadata.ENV.trim()),
+                'NODE_ENV': JSON.stringify(metadata.ENV.trim()),
             }
         }),
         new DeployToWar({ fileName: "aslmx.war" }) 

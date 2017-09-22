@@ -27,10 +27,11 @@ export class AddPersonComponent {
 
     save(){
         this.isSaving = true;
-        this.personsService.save(this.form.value).subscribe(response => {
-            this.isSaving = false;
-            this.form.reset();
-        })
+        this.personsService.save(this.form.value)
+            .finally(() => this.isSaving = false )
+            .subscribe(response => {
+                this.form.reset();
+            })
     }
 
     imageFileSelected(event: any){
@@ -56,6 +57,7 @@ export class AddPersonComponent {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
+            console.log(reader.result.length)
             this.form.controls.image.setValue(reader.result);
         }
     }

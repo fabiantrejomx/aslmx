@@ -3,12 +3,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var commonConfig = require('./webpack.common.js');
 var webpack = require('webpack');
 
+const ENV = process.env.ENV = process.env.NODE_ENV;
 const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const metadata = webpackMerge(commonConfig.metadata, {
-  host: 'localhost',
-  port: 8081,
   ENV: ENV
 });
 
@@ -18,7 +16,7 @@ module.exports = webpackMerge(commonConfig, {
 
     output: {
         path: path.resolve(rootDir, 'dist'),
-        publicPath: 'http://localhost:8081/',
+        publicPath: 'http://localhost:8080/',
         filename: '[name].js',
         chunkFilename: '[id].chunk.js'
     },
@@ -27,8 +25,8 @@ module.exports = webpackMerge(commonConfig, {
         new ExtractTextPlugin('[name].css'),
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(metadata.ENV),
-                'NODE_ENV': JSON.stringify(metadata.ENV),
+                'ENV': JSON.stringify(metadata.ENV.trim()),
+                'NODE_ENV': JSON.stringify(metadata.ENV.trim())
             }
         }),
     ],
@@ -39,7 +37,7 @@ module.exports = webpackMerge(commonConfig, {
         proxy: [
             {
                 path: '/users',
-                target: "http://8aaaf691.ngrok.io",
+                target: "http://34.213.112.30:8081",
                 changeOrigin: true
             }
         ]

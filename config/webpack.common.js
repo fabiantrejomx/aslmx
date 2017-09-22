@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var commonConfig = require('./webpack.common.js');
+var webpackMerge = require('webpack-merge');
 
 const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
@@ -66,9 +68,7 @@ module: {
         new CopyWebpackPlugin([ 
             { from: 'src/assets/i18n', to: 'assets/i18n' }, 
             { from: 'src/assets/css', to: 'assets/css' },
-            { from: 'src/assets/fonts', to: 'assets/fonts' },
-            { from: 'src/assets/demo', to: 'assets/demo' },
-            { from: 'src/assets/img', to: 'assets/img' }
+            { from: 'src/assets/fonts', to: 'assets/fonts' }
             
         ])
     ]
