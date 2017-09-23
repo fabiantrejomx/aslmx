@@ -24,6 +24,6 @@
     </tbody>
 </table>
 
-<div class="alert alert-info" *ngIf="!persons.length">No se encontrarón resultados</div>
+<div class="alert alert-info" *ngIf="isSuccess &&!persons.length">No se encontrarón resultados</div>
 
 <login (success)="isSuccess = true;" (error)="isSuccess = false;" *ngIf="!isSuccess"></login>

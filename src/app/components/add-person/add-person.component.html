@@ -1,34 +1,40 @@
-<form [formGroup]="form">
-    <div class="form-group">
-        <p for="image">Imagen de persona a buscar</p>
-        <input #fileInput (change)="imageFileSelected($event)" class="upload" type="file" accept=".jpg, .jpeg, .png, .bmp">
+<div class="row d-flex justify-content-center">
+    <div class="col-xs-7 col-md-5">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <p for="image">Imagen de persona a buscar</p>
+                <input #fileInput (change)="imageFileSelected($event)" class="upload" type="file" accept=".jpg, .jpeg, .png, .bmp">
+            </div>
+            <div class="form-group">
+                <label for="email">Ingresa tu email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Ingresa tu teléfono</label>
+                <input type="number" class="form-control" id="phone" placeholder="Teléfono" formControlName="contacto">
+            </div>
+            <div class="form-group">
+                <label for="fullname">Ingresa el nombre de la persona a buscar</label>
+                <input type="text" class="form-control" id="fullname" placeholder="Nombre" formControlName="fullname">
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': form.controls.age.errors?.invalidNumber && form.controls.age.touched}">
+                <label for="age">Ingresa la edad de la persona a buscar</label>
+                <div class="input-group row col-6">
+                    <input formControlName="age" type="number" class="form-control" placeholder="Edad">
+                    <span class="input-group-btn">
+                        <button [disabled]="true" class="btn" 
+                            [ngClass]="{'btn-inverse': !(form.controls.age.errors?.invalidNumber && form.controls.age.touched), 
+                                        'btn-danger': form.controls.age.errors?.invalidNumber && form.controls.age.touched}" type="button">
+                            años
+                        </button>
+                    </span>
+                </div>
+                <div *ngIf="form.controls.age.errors?.invalidNumber && form.controls.age.touched" class="form-control-feedback text-danger">Ingresar una edad válida</div>
+            </div>
+            <button class="btn btn-success" (click)="save()" [disabled]="form.invalid || isSaving">
+                <span *ngIf="!isSaving">Enviar información</span>
+                <span *ngIf="isSaving">Enviando información...</span>
+            </button>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="email">Ingresa tu email</label>
-        <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
-    </div>
-    <div class="form-group">
-        <label for="phone">Ingresa tu teléfono</label>
-        <input type="number" class="form-control" id="phone" placeholder="Teléfono" formControlName="contacto">
-    </div>
-    <div class="form-group">
-        <label for="fullname">Ingresa nombre</label>
-        <input type="text" class="form-control" id="fullname" placeholder="Ingresa nombre" formControlName="fullname">
-    </div>
-    <div class="form-group">
-        <label for="age">Ingresa la edad</label>
-        <div class="input-group">
-            <input formControlName="age" type="number" class="form-control" placeholder="Edad">
-            <span class="input-group-btn">
-                <button [disabled]="true" class="btn btn-inverse" type="button">
-                    años
-                </button>
-            </span>
-        </div>
-        <div *ngIf="form.controls.age.errors?.invalidNumber && form.controls.age.touched" class="form-control-feedback text-danger">Ingresar una edad valida</div>
-    </div>
-    <button class="btn btn-success" (click)="save()" [disabled]="form.invalid || isSaving">
-        <span *ngIf="!isSaving">Enviar información</span>
-        <span *ngIf="isSaving">Enviando información...</span>
-    </button>
-</form>
+</div>
