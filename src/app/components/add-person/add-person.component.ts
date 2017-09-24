@@ -51,8 +51,7 @@ export class AddPersonComponent implements OnInit{
                     showConfirmButton: true,
                     confirmButtonText: 'OK',
                     allowOutsideClick: false
-                }).then(() => this.form.reset())
-                
+                }).then(() => this.form.reset())                
             })
     }
 

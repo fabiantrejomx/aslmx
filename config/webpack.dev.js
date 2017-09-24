@@ -16,7 +16,7 @@ module.exports = webpackMerge(commonConfig, {
 
     output: {
         path: path.resolve(rootDir, 'dist'),
-        publicPath: 'http://localhost:8081/',
+        publicPath: 'http://localhost:8080/',
         filename: '[name].js',
         chunkFilename: '[id].chunk.js'
     },
@@ -36,8 +36,8 @@ module.exports = webpackMerge(commonConfig, {
         stats: 'minimal',
         proxy: [
             {
-                path: '/users',
-                target: "http://34.213.112.30:8081",
+                path: '/sismo-api',
+                target: "http://34.213.112.30:8080",
                 changeOrigin: true
             }
         ]

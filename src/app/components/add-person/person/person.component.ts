@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators} from  '@angular/forms';
 import { PersonsService } from '../../../services/persons.service';
+import { SweetAlertService } from '../../../services/sweet-alert.service';
 
 @Component({
     selector: 'person',
@@ -14,6 +15,7 @@ export class PersonComponent implements OnInit{
     isSaving: boolean;
 
     constructor(
+        private sweetAlertService: SweetAlertService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private personsService: PersonsService,
@@ -38,9 +40,22 @@ export class PersonComponent implements OnInit{
         this.personsService.sendAlert(body)
         .finally(() => this.isSaving = false)
         .subscribe(response => {
-            this.router.navigate(['app/dashboard']);
+            this.sweetAlertService.swal({
+                type: "success",
+                title: "<h4>¡Muchas gracias!, avisameros.</h4>",
+                showConfirmButton: true,
+                confirmButtonText: 'OK',
+                allowOutsideClick: false
+            }).then(() => this.router.navigate(['app/dashboard']))
         }
-        ,error => console.log(error))
+        ,error => {
+            this.sweetAlertService.swal({
+                type: "error",
+                title: "<h5>¡Intentá de nuevo. Ocurrio un error</h5>",
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            })
+        })
     }
 
     goToBack(){

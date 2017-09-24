@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install": "napa",
-    "start": "export NODE_ENV=integration|| set NODE_ENV=integration&& webpack-dev-server --inline --progress --port 8081",
+    "start": "export NODE_ENV=integration|| set NODE_ENV=integration&& webpack-dev-server --inline --progress --port 8080",
     "postinstall": "typings install",
     "build:prod": "rimraf dist && rimraf aslmx.war&& export NODE_ENV=production|| set NODE_ENV=production && webpack --progress"
   },
